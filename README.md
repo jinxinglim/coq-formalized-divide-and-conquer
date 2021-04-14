@@ -11,7 +11,7 @@ The following are the Coq files in the "theories" folder:
 1. DivConq.v: contains the formalization of different variations of divide-and-conquer algorithm design paradigm for lists, which are derived from well-founded induction. The following are the different variations:
     
     a. div_conq_split:
-    ```
+    ```coq
     forall (A : Type) (P : list A -> Type),
     P [::]
     -> (forall a : A, P [a])
@@ -19,7 +19,7 @@ The following are the Coq files in the "theories" folder:
     -> forall  ls : list A, P ls
     ```
     where the split function is defined as follows:
-    ```
+    ```coq
     Fixpoint split (ls : list A) : list A * list A :=
     match ls with
     | nil => (nil, nil)
@@ -30,7 +30,7 @@ The following are the Coq files in the "theories" folder:
     ```
 
     b. div_conq_pair
-    ```
+    ```coq
     forall (A : Type) (P : list A -> Type),
     P [::]
     -> (forall a : A, P [a])
@@ -40,14 +40,14 @@ The following are the Coq files in the "theories" folder:
     ```
 
     c. div_conq_pivot
-    ```
+    ```coq
     forall (A : Type) (P : list A -> Type),
     P [::]
     -> (forall (a : A) (l : list A), P (fst (split_pivot al))-> P (snd (split_pivot a l)) -> P (a :: l))
     -> forall l : list A, P l
     ```
     where split_pivot is defined as follows:
-    ```
+    ```coq
     Fixpoint split_pivot (pivot : A) l : list A * list A :=
     match l with
     | nil => (nil, nil)
