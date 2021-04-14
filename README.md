@@ -1,7 +1,7 @@
 # Induction-Principles-to-Sorting-Algorithms
 
 This respository contains the formalization of different variations of divide-and-conquer algorithm design paradigm for lists, which lead to different sorting algorithms. All the sorting algorithms are proven in a top-down approach from the type:
-```
+```coq
 Theorem sort_prog : forall (l : list nat), {l' : list nat | sorted l' /\ permutation l' l}.
 ```
 The different variations of proofs of the above type, which lead to different sorting algorithms, are extracted as OCaml programs and are stored in the "extraction"
