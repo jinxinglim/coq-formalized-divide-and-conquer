@@ -1,7 +1,8 @@
 # Induction-Principles-to-Sorting-Algorithms
 
 This respository contains the following files:
-1. DivConq.v: contains the formalization of different variations of divide-and-conquer algorithm design paradigm for lists, which are derived from well-founded induction.
+1. DivConq.v: 
+    contains the formalization of different variations of divide-and-conquer algorithm design paradigm for lists, which are derived from well-founded induction.
     
     a. div_conq_split:
     ```
