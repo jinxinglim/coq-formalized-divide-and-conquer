@@ -1,0 +1,7 @@
+-R theories DiffSorts
+
+theories/DivConq.v
+theories/isort.v
+theories/msort.v
+theories/psort.v
+theories/qsort.v
