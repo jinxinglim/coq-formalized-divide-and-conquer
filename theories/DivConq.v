@@ -42,7 +42,7 @@ destruct (le_lt_dec 2 (length x)).
   + apply splitF_wf1; auto.
   + apply splitF_wf2; auto.
 - destruct x; auto. simpl in l; 
-apply le_S_n, le_S_n, Nat.le_0_r,length_zero_iff_nil  in l; rewrite l; auto.
+  apply le_S_n, le_S_n, Nat.le_0_r,length_zero_iff_nil  in l; rewrite l; auto.
 Defined.
 
 Fixpoint split (ls : list A) : list A * list A :=
