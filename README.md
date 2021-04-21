@@ -6,6 +6,8 @@ This respository contains the formalization of different variations of divide-an
 ```coq
 Theorem sort_prog : forall (l : list nat), {l' : list nat | sorted l' /\ permutation l' l}.
 ```
+(**Note:** Our example specifically uses type nat as we want to extract the proof as a working OCaml program eventually. However, this can be generalized to any type other than nat as long as it can be sorted in some ordering.)
+
 The different variations of proofs of the above type, which lead to different sorting algorithms, are extracted as OCaml programs and are stored in the "extraction"
 folder.
 
@@ -67,7 +69,8 @@ The following are the Coq files in the "theories" folder:
 ## Prerequitses
 
 1. Coq Version 8.12
-2. CoqHammer
+2. OCaml [most versions will work] (if you would like to test the extracted files)
+3. CoqHammer
 
     Just need to install coq-hammer-tactics:
     ```
