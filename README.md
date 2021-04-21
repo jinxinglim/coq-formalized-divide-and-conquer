@@ -68,6 +68,7 @@ The following are the Coq files in the "theories" folder:
 
 1. Coq Version 8.12
 2. CoqHammer
+
     Just need to install coq-hammer-tactics:
     ```
     $ opam repo add coq-released https://coq.inria.fr/opam/released
