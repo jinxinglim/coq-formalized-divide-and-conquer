@@ -1,5 +1,7 @@
 # Induction-Principles-to-Sorting-Algorithms
 
+> **NOTE:** This branch does not require installation of CoqHammer. Hence, most of the codes are not automated. As a result, they are longer than the ones in main-hammer branch.
+
 This respository contains the formalization of different variations of divide-and-conquer algorithm design paradigm for lists, which lead to different sorting algorithms. All the sorting algorithms are proven in a top-down approach from the type:
 ```coq
 Theorem sort_prog : forall (l : list nat), {l' : list nat | sorted l' /\ permutation l' l}.
@@ -64,13 +66,7 @@ The following are the Coq files in the "theories" folder:
 
 ## Prerequitses
 
-1. Coq Version 8.12
-2. CoqHammer
-    Just need to install coq-hammer-tactics:
-    ```
-    $ opam repo add coq-released https://coq.inria.fr/opam/released
-    $ opam install coq-hammer-tactics
-    ```
+Coq Version 8.12
 
 ## Make and compile all files
 
