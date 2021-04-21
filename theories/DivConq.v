@@ -1,7 +1,5 @@
 Require Import Arith List.
 
-From Hammer Require Import Hammer.
-
 (* Below codes are reference and modified from 
    http://adam.chlipala.net/cpdt/html/GeneralRec.html *)
 
@@ -15,7 +13,13 @@ Definition lengthOrder (ls1 ls2 : list A) := length ls1 < length ls2.
 Lemma lengthOrder_wf' : forall len, forall ls, 
   length ls <= len -> Acc lengthOrder ls.
 Proof.
-unfold lengthOrder; induction len; sauto.
+unfold lengthOrder; induction len.
+- intros; rewrite Nat.le_0_r,length_zero_iff_nil in H; rewrite H; constructor;
+  intros; inversion H0.
+- destruct ls; constructor; simpl; intros.
+  + inversion H0.
+  + simpl in H; apply le_S_n in H; apply lt_n_Sm_le in H0; apply IHlen; 
+    eapply Nat.le_trans; eassumption.
 Defined.
 
 Lemma lengthOrder_wf : well_founded lengthOrder.
@@ -33,7 +37,12 @@ Lemma div_conq :
     -> forall ls, P ls.
 Proof.
 intros; apply (well_founded_induction_type lengthOrder_wf); intros.
-destruct (le_lt_dec 2 (length x)); sauto.
+destruct (le_lt_dec 2 (length x)).
+- apply X1; apply X2.
+  + apply splitF_wf1; auto.
+  + apply splitF_wf2; auto.
+- destruct x; auto. simpl in l; 
+apply le_S_n, le_S_n, Nat.le_0_r,length_zero_iff_nil  in l; rewrite l; auto.
 Defined.
 
 Fixpoint split (ls : list A) : list A * list A :=
