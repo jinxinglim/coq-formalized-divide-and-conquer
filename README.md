@@ -1,4 +1,4 @@
-# Induction-Principles-to-Sorting-Algorithms
+# Induction-Principles-to-Sorting-Algorithms (INCOMPLETE)
 
 > **NOTE:** This branch does not require installation of CoqHammer. Hence, most of the codes are not automated. As a result, they are longer than the ones in main-hammer branch.
 
