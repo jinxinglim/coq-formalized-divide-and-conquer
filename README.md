@@ -1,12 +1,6 @@
 # Induction-Principles-to-Sorting-Algorithms
 
----
-
-**NOTE**
-
-This branch requires installation of CoqHammer. Please refer to main branch if you would like to run the codes without CoqHammer.
-
----
+> **NOTE:** This branch requires installation of CoqHammer. Please refer to main branch if you would like to run the codes without CoqHammer.
 
 This respository contains the formalization of different variations of divide-and-conquer algorithm design paradigm for lists, which lead to different sorting algorithms. All the sorting algorithms are proven in a top-down approach from the type:
 ```coq
