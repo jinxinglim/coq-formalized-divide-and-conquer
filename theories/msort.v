@@ -2,8 +2,6 @@ Require Import Arith Sorted Permutation List DivConq.
 Import List.ListNotations.
 Open Scope list_scope.
 
-From Hammer Require Import Hammer.
-
 Require Extraction.
 Require Import ExtrOcamlBasic.
 Require Import ExtrOcamlNatInt.
@@ -29,21 +27,24 @@ Lemma merge_sorted : forall (l1 l2 : list nat),
 Proof.
 induction l1; induction l2; intros; simpl; auto.
 destruct (le_lt_dec a a0).
-- constructor. apply IHl1; sauto. sauto.
-- constructor; sauto.
+- constructor. apply IHl1; inversion H; auto.
+  destruct l1; destruct l2; simpl; auto; destruct (le_lt_dec n a0); auto;
+  constructor; inversion H; inversion H4; auto.
+- constructor. inversion H0; apply IHl2; auto.
+  destruct l2. constructor; apply Nat.lt_le_incl; auto. 
+  destruct (le_lt_dec a n); constructor; inversion H0; inversion H4; auto;
+  apply Nat.lt_le_incl; auto.
 Defined.
 
 Lemma permutation_merge_concat : forall (l1 l2 : list nat),
   permutation (merge l1 l2) (l1 ++ l2).
 Proof.
 induction l1; simpl merge.
-- sauto.
+- destruct l2; apply Permutation_refl.
 - induction l2.
-  + (* hammer. *)
-    hauto use: app_nil_l, Permutation_middle, app_comm_cons, app_nil_end 
-    unfold: permutation.
+  + rewrite <- app_nil_end; apply Permutation_refl.
   + destruct (le_lt_dec a a0).
-    * sauto.
+    * constructor; apply IHl1.
     * apply Permutation_cons_app, IHl2.
 Defined.
 
