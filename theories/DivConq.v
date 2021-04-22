@@ -95,7 +95,9 @@ Lemma div_conq_pair : forall (P : list A -> Type),
        -> P (a1 :: a2 :: l)) 
     -> forall (l : list A), P l.
 Proof.
-intros; eapply well_founded_induction_type. eapply lengthOrder_wf. sauto.
+intros; eapply well_founded_induction_type. eapply lengthOrder_wf.
+destruct x; auto; destruct x; auto. intros; apply X2; auto.
+apply X3; unfold lengthOrder; simpl; auto.
 Defined.
 
 Variable le: A -> A -> Prop.
@@ -111,12 +113,14 @@ Fixpoint split_pivot (pivot : A) l : list A * list A :=
 
 Lemma split_pivot_wf1 : forall a l, length (fst (split_pivot a l)) <= length l.
 Proof.
-induction l; ssimpl.
+induction l; simpl; auto; destruct (le_dec a0 a); destruct (split_pivot a l); 
+simpl in *; auto; apply le_n_S; auto.
 Defined.
 
 Lemma split_pivot_wf2 : forall a l, length (snd (split_pivot a l)) <= length l.
 Proof.
-induction l; ssimpl.
+induction l; simpl; auto; destruct (le_dec a0 a); destruct (split_pivot a l); 
+simpl in *; auto; apply le_n_S; auto.
 Defined.
 
 Theorem div_conq_pivot : 
@@ -127,15 +131,16 @@ Theorem div_conq_pivot :
     -> forall l, P l.
 Proof.
 intros; eapply well_founded_induction_type. eapply lengthOrder_wf.
-destruct x; ssimpl; apply X0; apply X1; unfold lengthOrder; ssimpl; 
-apply le_lt_n_Sm. apply split_pivot_wf1. apply split_pivot_wf2.
+destruct x; intros; auto; apply X0; apply X1; apply le_lt_n_Sm.
+apply split_pivot_wf1. apply split_pivot_wf2.
 Defined.
 
 Hypothesis notle_le: forall x y, ~ le x y -> le y x.
 
 Lemma Forall_snd_split_pivot : forall a l, Forall (le a) (snd(split_pivot a l)).
 Proof.
-induction l; sauto.
+induction l; simpl; auto; destruct (le_dec a0 a); destruct (split_pivot a l);
+simpl in *; auto.
 Defined.
 
 End DivConq.
