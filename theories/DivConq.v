@@ -57,14 +57,24 @@ Fixpoint split (ls : list A) : list A * list A :=
 Lemma split_wf : forall len ls, 2 <= length ls <= len
   -> let (ls1, ls2) := split ls in lengthOrder ls1 ls /\ lengthOrder ls2 ls.
 Proof.
-unfold lengthOrder; induction len. sauto. destruct ls. sauto.
-destruct ls. sauto. destruct (le_lt_dec 2 (length ls)). sintros; 
-specialize (IHlen ls); simpl ; destruct (split ls); destruct IHlen; simpl; sauto.
-destruct ls; sauto.
+unfold lengthOrder; induction len; intros.
+- inversion H; inversion H1; rewrite H1 in H0; inversion H0.
+- destruct ls; inversion H.
+  + inversion H0.
+  + destruct ls; simpl; auto. 
+    destruct (le_lt_dec 2 (length ls)).
+    * specialize (IHlen ls); destruct (split ls); destruct IHlen; simpl.
+      simpl in H1; apply le_S_n in H1; split; auto. apply le_Sn_le; auto. 
+      split; rewrite <- Nat.succ_lt_mono; auto.
+    * inversion l. 
+      -- destruct ls; inversion H3; apply length_zero_iff_nil in H4; rewrite H4;
+         simpl; auto.
+      -- apply le_S_n in H3. inversion H3. 
+         apply length_zero_iff_nil in H5; rewrite H5; simpl; auto.
 Defined.
 
 Ltac split_wf := intros ls ?; intros; generalize (@split_wf (length ls) ls);
-  destruct (split ls); destruct 1; sauto.
+  destruct (split ls); destruct 1; auto.
 
 Lemma split_wf1 : forall ls, 2 <= length ls -> lengthOrder (fst (split ls)) ls.
 Proof.
