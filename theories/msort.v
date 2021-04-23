@@ -51,9 +51,12 @@ Defined.
 Lemma permutation_split : forall (l : list nat),
   permutation (fst (split nat l) ++ snd (split nat l)) l.
 Proof.
-apply div_conq_pair; simpl; firstorder;
-destruct (split nat l); simpl in *; constructor;
-apply Permutation_sym,Permutation_cons_app, Permutation_sym; auto.
+apply div_conq_pair; intros; simpl.
+- constructor.
+- repeat constructor.
+- repeat constructor.
+- destruct (split nat l); simpl in *; constructor;
+  apply Permutation_sym,Permutation_cons_app, Permutation_sym; auto.
 Defined.
 
 Lemma merge_prog : forall (l l1 l2 : list nat), 
@@ -76,5 +79,5 @@ apply div_conq_split.
   eapply merge_prog. apply H. trivial. apply H0. trivial. 
 Defined.
 
-Extraction "extraction/merge.ml" merge.
-Extraction "extraction/msort.ml" msort_prog.
+(* Extraction "extraction/merge.ml" merge.
+Extraction "extraction/msort.ml" msort_prog. *)
