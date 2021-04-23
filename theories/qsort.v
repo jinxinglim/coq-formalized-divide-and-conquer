@@ -47,4 +47,4 @@ unshelve eapply div_conq_pivot. exact le. exact le_dec.
     rewrite H0, H2; apply Permutation_split_pivot.
 Defined.
 
-(* Extraction "extraction/qsort.ml" qsort_prog. *)
+Extraction "extraction/qsort.ml" qsort_prog.

@@ -79,5 +79,5 @@ apply div_conq_split.
   eapply merge_prog. apply H. trivial. apply H0. trivial. 
 Defined.
 
-(* Extraction "extraction/merge.ml" merge.
-Extraction "extraction/msort.ml" msort_prog. *)
+Extraction "extraction/merge.ml" merge.
+Extraction "extraction/msort.ml" msort_prog.
