@@ -27,17 +27,11 @@ type 'a sig0 = 'a
 let rec div_conq splitF x x0 x1 ls =
   let s = (<=) (Pervasives.succ (Pervasives.succ 0)) (length ls) in
   if s
-  then let h0 = div_conq splitF x x0 x1 (snd (splitF ls)) in
-       x1 ls (div_conq splitF x x0 x1 (fst (splitF ls))) h0
+  then x1 ls (div_conq splitF x x0 x1 (fst (splitF ls)))
+         (div_conq splitF x x0 x1 (snd (splitF ls)))
   else (match ls with
         | [] -> x
-        | a :: x2 ->
-          (match x2 with
-           | [] -> x0 a
-           | a0 :: x3 ->
-             x1 (a :: (a0 :: x3))
-               (div_conq splitF x x0 x1 (fst (splitF (a :: (a0 :: x3)))))
-               (div_conq splitF x x0 x1 (snd (splitF (a :: (a0 :: x3)))))))
+        | a :: _ -> x0 a)
 
 (** val split : 'a1 list -> 'a1 list * 'a1 list **)
 
