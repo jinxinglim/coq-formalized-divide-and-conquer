@@ -13,12 +13,7 @@ let rec div_conq_pair x x0 x1 x2 = function
 | a :: x3 ->
   (match x3 with
    | [] -> x0 a
-   | a0 :: x4 ->
-     (match x4 with
-      | [] -> x1 a a0
-      | a1 :: x5 ->
-        x2 a a0 (a1 :: x5) (x1 a a0)
-          (let y = a1 :: x5 in div_conq_pair x x0 x1 x2 y)))
+   | a0 :: x4 -> x2 a a0 x4 (x1 a a0) (div_conq_pair x x0 x1 x2 x4))
 
 (** val merge : int list -> int list -> int list **)
 

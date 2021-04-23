@@ -19,7 +19,7 @@ Lemma pair_merge_prog : forall (a1 a2 : nat) (l l' l'0 : list nat),
 Proof.
 intros; exists (merge l'0 l'); split.
 - apply merge_sorted; auto.
-- rewrite permutation_merge_concat, H0, H2; simpl; firstorder.
+- rewrite permutation_merge_concat, H0, H2; simpl; repeat constructor; auto.
 Defined.
 
 Lemma psort_prog : 
@@ -35,4 +35,4 @@ apply div_conq_pair.
   eapply pair_merge_prog. apply H1. auto. apply H. auto.
 Defined.
 
-Extraction "psort.ml" psort_prog.
+Extraction "extraction/psort.ml" psort_prog.
