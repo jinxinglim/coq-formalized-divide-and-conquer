@@ -1,4 +1,4 @@
-# Induction-Principles-to-Sorting-Algorithms
+# Induction Principles to Sorting Algorithms
 
 > **NOTE:** This branch requires installation of CoqHammer. Please refer to main branch if you would like to run the codes without CoqHammer.
 
