@@ -1,8 +1,8 @@
-# Induction Principles to Sorting Algorithms
+# Formalization of Divide-and-Conquer in Coq
 
 > **NOTE:** This branch requires installation of CoqHammer. Please refer to main branch if you would like to run the codes without CoqHammer.
 
-This respository contains the formalization of different variations of divide-and-conquer algorithm design paradigm for lists, which lead to different sorting algorithms. All the sorting algorithms are proven in a top-down approach from the type:
+This respository contains the formalization of different variations of divide-and-conquer algorithm design paradigm for lists. As a case study, we will see how these different variations lead to different sorting algorithms. All the sorting algorithms are proven in a top-down approach from the type:
 ```coq
 Theorem sort_prog : forall (l : list nat), {l' : list nat | sorted l' /\ permutation l' l}.
 ```
