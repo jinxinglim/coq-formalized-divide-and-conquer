@@ -68,7 +68,7 @@ The following are the Coq files in the "theories" folder:
 
 ## Prerequitses
 
-1. Coq Version 8.12
+1. Coq Version 8.12 or above
 2. OCaml [most versions will work] (if you would like to test the extracted files)
 
 ## Make and compile all files
