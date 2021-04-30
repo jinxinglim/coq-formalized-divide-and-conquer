@@ -1,3 +1,11 @@
+(* This file does not use any new induction principle proven in DivConq.v.
+ * However, for completeness' sake, we will demonstrate how we can prove of the
+ * specification of a sorting algorithm via induction, which the extracted proof
+ * will be an insertion sort. Note that the proof of the inductive step, 
+ * sort_cons_prog, can be extracted as an insert function as well.
+ *)
+
+
 Require Import Arith Sorted Permutation List. 
 Import List.ListNotations.
 Open Scope list_scope.
