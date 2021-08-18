@@ -80,7 +80,7 @@ The following are the Coq files in the "theories" folder:
 
 ## Make and compile all files
 
-1. Go to the "Induction-Principles-to-Sorting-Algorithms" folder.
+1. Go to the "coq-formalized-divide-and-conquer" folder.
 2. Run the Makefile in terminal with the following command:
     ```
     $ make
